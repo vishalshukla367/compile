@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<style>
+label
+{
+	color: white;
+}
+body
+{
+	background-color: rgb(125,255,200);
+	font-family: verdhana;
+}
+pre
+{
+	font-weight: bold;
+	font-size: 22px;
+}
+#outer
+{
+	width: 100%;
+	height: 550px;
+	border: 4px solid black;
+}
+.codebox
+{
+	height: 420px;
+	color: white;
+	margin-top: 5px;
+	margin-left: 5px;
+	padding-left: 5px;
+	border: 3px solid black;
+	resize: none;
+	width: 48%;
+	float: left;
+	background-color: rgb(0,0,0);
+}
+#testcase
+{
+	height: 50px;
+	margin-left: 5px;
+	padding-top: 10px;
+	margin-top: 3px;
+	border: 3px solid black;
+	width: 48%;
+	background-color: lightgrey;
+}
+input
+{
+	border-color: black;
+	box-sizing: 30px;
+	margin-top: 25px;
+	font-weight: bold;
+	float: right;
+}
+textarea
+{
+	font-size: 25px bold;
+}
+</style>
+<title>welcome</title>
+</head>
+<body >
+	<button id="select" type="submit" name="selected" value="ok" onclick="dcode()">Ok</button>
+
+		<script>
+		function dcode()	
+		{
+			var x=document.getElementById("languagesel");
+			value=x.options[x.selectedIndex];
+			var val=value.value;
+			var y=val.localeCompare("java")
+			var z=val.localeCompare("c")
+			if(y==0)
+			{
+			document.getElementById("codebx").innerHTML="import java.util.*;\n"+
+"class main\n"+
+"{\n"+
+"	public static void main(String str[])\n"+
+"	{\n"+
+"		Scanner s=new Scanner(System.in);\n"+
+"                  System.out.println(\"hello\");\n"+
+"	}\n"+
+"}";
+			}
+			else if(z==0)
+			{
+			document.getElementById("codebx").innerHTML="#include<stdio.h>;\n"+
+"int main()\n"+
+"{\n"+
+"  	printf(\"hello\");\n"+
+"}";
+			}
+			else
+			{
+				document.getElementById("codebx").innerHTML="print('hello')";
+			}
+	}
+
+		</script>
+	<form action="/profile1/" method="post">
+		<lable for="language" id="languagetag">select language</lable>
+		<select name="option" id="languagesel" align="center">
+			<option>java</option>
+			<option>python</option>
+			<option>c</option>
+		</select>
+		<br>
+
+			<pre>    Write your code here                         Output desplayed here</pre>
+	<div id="outer">
+		<div id="inner1">
+			<div >
+				<textarea id="codebx" class="codebox" name="code">{{ code }}</textarea>
+			</div>
+			<div >
+				<textarea class="codebox" name="output">{{ message }}</textarea>
+				<input type="submit" name="submit" value="run"></input>
+			</div>
+		</div>
+				<textarea id="testcase" name="testcase" placeholder="input">{{ inpt }}</textarea>
+	</div>
+	</form>
+</body>
+</html>
